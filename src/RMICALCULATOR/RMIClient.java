@@ -1,6 +1,5 @@
 package RMICALCULATOR;
 
-
 import RMICALCULATOR.RMIClientNodeConnector;
 import RMICALCULATOR.RMICommandExecutor;
 import RMICALCULATOR.FileExplorer;
@@ -17,53 +16,18 @@ import java.util.regex.Matcher;
 public class RMIClient {
 
     public static void main(String[] args) throws IOException, NotBoundException {
-//
-//        // determine the machine of the server
-//        String serverName;
-//        if (args.length == 0) {
-//            serverName = "127.0.0.1";
-//        } else {
-//            serverName = args[0];
-//        }
+
         String rmiName = "rmi://localhost:8999/master";
 
-        System.out.println("Connecting to: " + rmiName);
-         RMIClientNodeConnector c = (RMIClientNodeConnector) Naming.lookup(rmiName);
-         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Connecting: " + rmiName);
+        RMIClientNodeConnector c = (RMIClientNodeConnector) Naming.lookup(rmiName);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
-           
-            System.err.print("Write your command here:");
+
+            System.out.print("Input command:");
             String name = reader.readLine();
             System.out.println(name);
             System.out.println(c.forwardCommand(name));
-            
-            
-            
-//               // determine the machine of the server
-//        String serverName;
-//        if (args.length == 0) {
-//            serverName = "127.0.0.1";
-//        } else {
-//            serverName = args[0];
-//        }
-//        String rmiName = "rmi://" + serverName + "/CalculatorService";
-//
-//        System.out.println("Connecting to: " + rmiName);
-//         RMICommandExecutor c = (RMICommandExecutor) Naming.lookup(rmiName);
-//         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-//        while (true) {
-//           
-//            System.err.print("Write your command here:");
-//            String name = reader.readLine();
-//            System.out.println(name);
-//            System.out.println(c.execute(name));
-            
-            
-
         }
-        
-        
-        
     }
-   
 }

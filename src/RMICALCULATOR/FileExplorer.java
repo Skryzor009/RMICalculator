@@ -4,7 +4,7 @@ package RMICALCULATOR;
 /**
  * Has the role of exploring the contents of a predefined directory and managing the files stored within.
  *
- * @author Leni
+ * @author skryzor
  */
 public interface FileExplorer {
 

@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author Leni
+ * @author skryzor
  */
 public final class CLIExecutor extends UnicastRemoteObject implements RMICommandExecutor {
 
@@ -35,30 +35,30 @@ public final class CLIExecutor extends UnicastRemoteObject implements RMICommand
             String cmd = matcher.group(1);
             System.err.println(cmd);
             switch (cmd) {
-                case "read":
+                case "readf":
                     System.err.println("Selected cat");
                     return fileExplorer.readFileContent(matcher.group(3));
-                case "ls":
+                case "showf":
                     System.err.println("Selected ls");
                     return fileExplorer.listAllFiles();
-                case "rm":
+                case "delf":
                     System.err.println("Selected rm");
                     return fileExplorer.deleteFile(matcher.group(3));
-                case "touch":
+                case "addf":
                     System.err.println("Selected touch");
                     return fileExplorer.createFile(matcher.group(3));
-                case "append":
+                case "writef":
                     System.err.println("Selected sh");
                     return processAppend(matcher.group(3));
-                case "toucha":
+                case "addwritef":
                     System.err.println("Selected toucha");
-                    return processAppendAndC(matcher.group(3));    
+                    return processAppendAndC(matcher.group(3));
                 default:
-                    return "The command does not exist";
+                    return "Command doesn't exist";
             }
         }
 
-        return "Invalid input!";
+        return "Wrong Input";
 
     }
 
@@ -68,29 +68,26 @@ public final class CLIExecutor extends UnicastRemoteObject implements RMICommand
         Matcher matcher = REGEX.matcher(appendParams);
 
         if (matcher.matches()) {
-            
-            
+
             return fileExplorer.fileWrite(matcher.group(1), matcher.group(3));
-            
+
         }
 
-        return "The command can't be executed";
+        return "Can't execute command";
     }
-    
-    
+
     private String processAppendAndC(String appendParams) {
         String command;
         String text;
         Matcher matcher = REGEX.matcher(appendParams);
 
         if (matcher.matches()) {
-            
-            
+
             return fileExplorer.fileCreateWrite(matcher.group(1), matcher.group(3));
-            
+
         }
 
-        return "The command can't be executed";
+        return "Can't execute command";
     }
 
 }

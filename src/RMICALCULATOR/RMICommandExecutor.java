@@ -10,7 +10,7 @@ import java.rmi.RemoteException;
 
 /**
  *
- * @author Leni
+ * @author skryzor
  */
 public interface RMICommandExecutor extends Remote {
     

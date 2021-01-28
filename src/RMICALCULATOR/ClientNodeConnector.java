@@ -21,10 +21,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Leni
+ * @author skryzor
  */
 public class ClientNodeConnector extends UnicastRemoteObject implements RMIClientNodeConnector {
-
 
     public ClientNodeConnector() throws RemoteException {
     }
@@ -33,7 +32,7 @@ public class ClientNodeConnector extends UnicastRemoteObject implements RMIClien
     public String forwardCommand(String command) throws RemoteException {
         String rmiName = "rmi://localhost:9000/fileExplorer";
 
-        System.out.println("Connecting to: " + rmiName);
+        System.out.println("Connecting: " + rmiName);
         RMICommandExecutor c = null;
         try {
             c = (RMICommandExecutor) Naming.lookup(rmiName);
@@ -43,8 +42,6 @@ public class ClientNodeConnector extends UnicastRemoteObject implements RMIClien
         } catch (MalformedURLException ex) {
             Logger.getLogger(ClientNodeConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-         
 
         return c.execute(command);
     }

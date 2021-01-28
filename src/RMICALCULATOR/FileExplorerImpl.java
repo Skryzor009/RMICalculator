@@ -35,9 +35,8 @@ public class FileExplorerImpl implements FileExplorer {
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("That file doesn't exist.");
-            return "That file doesn't exist.";
-            //e.printStackTrace();
+            System.out.println("File doesn't exist");
+            return "File doesn't exist";
         }
 
         return text;
@@ -71,11 +70,11 @@ public class FileExplorerImpl implements FileExplorer {
         File file = new File(name);
 
         if (file.delete()) {
-            text = "File deleted successfully";
-            System.out.println("File deleted successfully");
+            text = "File deleted";
+            System.out.println("File deleted");
         } else {
-            text = "File doesn't exist. ";
-            System.out.println("File doesn't exist. ");
+            text = "File doesn't exist";
+            System.out.println("File doesn't exist");
         }
 
         return text;
@@ -88,15 +87,15 @@ public class FileExplorerImpl implements FileExplorer {
         try {
             File myObj = new File(name);
             if (myObj.createNewFile()) {
-                System.out.println("File created: " + myObj.getName());
-                text = "File created: " + myObj.getName();
+                System.out.println("Created: " + myObj.getName());
+                text = "Created: " + myObj.getName();
             } else {
-                System.out.println("File already exists.");
-                text = "File already exists.";
+                System.out.println("File exists.");
+                text = "File exists.";
             }
         } catch (IOException e) {
-            System.out.println("An error occurred.");
-            text = "An error occurred.";
+            System.out.println("Error");
+            text = "Error";
             e.printStackTrace();
         }
 
@@ -107,39 +106,16 @@ public class FileExplorerImpl implements FileExplorer {
     public String fileWrite(String name, String message) {
         String text = "";
 
-//        String context = null;
-//        context = message;
-//        File file = new File(name);
-//        FileWriter fr = null;
-//        try {
-//            fr = new FileWriter(file);
-//            fr.write(context);
-//            text = "Text was added succsessfully to the file";
-//        } catch (IOException e) {
-//             text="File doesn't exist!";
-//            e.printStackTrace();
-//           
-//        } finally {
-//            //close resources
-//            try {
-//                fr.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//            return text;
-//        }
         try {
             Files.write(Paths.get(name), message.getBytes(), StandardOpenOption.APPEND);
-            text = "Text was added succsessfully to the file";
+            text = "Text added";
         } catch (IOException e) {
             //exception handling left as an exercise for the reader
-            text = "File doesn't exist!";
+            text = "File doesn't exist";
         }
         return text;
     }
-    
-    
+
     @Override
     public String fileCreateWrite(String name, String message) {
         String text = "";
@@ -151,11 +127,11 @@ public class FileExplorerImpl implements FileExplorer {
         try {
             fr = new FileWriter(file);
             fr.write(context);
-            text = "Text was added succsessfully to the file";
+            text = "Text added";
         } catch (IOException e) {
-             text="File doesn't exist!";
+            text = "File doesn't exist";
             e.printStackTrace();
-           
+
         } finally {
             //close resources
             try {
@@ -166,7 +142,7 @@ public class FileExplorerImpl implements FileExplorer {
 
             return text;
         }
-      
+
     }
-    
+
 }
