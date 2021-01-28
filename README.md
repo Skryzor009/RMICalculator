@@ -1,2 +1,1 @@
-# RMICalculator
-Lorem Ipsum Dolor Sit Ames
+LOREM IMPSUM SIT DOLOR AMES
